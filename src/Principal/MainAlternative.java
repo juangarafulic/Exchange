@@ -64,5 +64,22 @@ public class MainAlternative {
 //            System.out.println(currencyBaseCode.getConversionRates().keySet()); // [USD, AED, AFN, ALL,
 //            System.out.println(currencyBaseCode.getConversionRates().keySet().getClass()); // class com.google.gson.internal.LinkedTreeMap$KeySet
 
+//            Solicitamos los pares de monedas y el monto a convertir
+//            System.out.println("Ingresa tu moneda base, por ejemplo: USD, CLP, ARS, ...");
+//            String baseCode = sc.nextLine().toUpperCase(); // en caso que el usuario utilice minusculas
+//            // conversionMap.get(baseCode); // es el valor asociado a la key!!
+//            // if (!conversionMap.containsKey(baseCode) || conversionMap.get(baseCode) == null) {
+//            System.out.println("Seleccionaste " + baseCode + ", ahora ingresa la moneda de destino");
+//            String targetCode = sc.nextLine().toUpperCase();
+//            double valueTargetCode = (double) conversionMap.get(targetCode);
+//            double valueBaseCode = (double) conversionMap.get(baseCode);
+//            double conversionRate = valueTargetCode / valueBaseCode;
+//            System.out.println("Vas a convertir " + baseCode + " en " + targetCode);
+//            System.out.println("La tasa de conversión es " + conversionRate + " " + targetCode + " por cada " + baseCode);
+//            System.out.println("Ingresa el monto de " + baseCode + " a convertir");
+//            double amount = sc.nextDouble();
+//            double conversionResult = conversionRate * amount;
+//            System.out.println(amount + " " + baseCode + " equivalen a " + conversionResult + " " + targetCode);
+//            System.out.println("¡Hasta pronto!");
     }
 }
