@@ -4,7 +4,7 @@ public class Menu {
 
     private String menu = """
                     *****************************************************
-                    ++++++++ Bienvenido al conversor de monedas +++++++++
+                    ++++++++        Conversor de monedas        +++++++++
                     -----------------------------------------------------
                       Opción      De:                    A:
                        (1)    [USD]-Dólar           [ARS]-Peso argentino
@@ -15,7 +15,7 @@ public class Menu {
                        (6)    [COP]-Peso colombiano [USD]-Dólar
                        (7)    ---SALIR---
                     -----------------------------------------------------
-                    +++++++++++++++++ Elija una opción ++++++++++++++++++
+                    >>>>>>>>>>>>>>>>> Elija una opción <<<<<<<<<<<<<<<<<<
                     *****************************************************
                     """;
 

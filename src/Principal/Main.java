@@ -21,7 +21,6 @@ public class Main {
             CurrencyCodeExchangeRateApi currencyCodeExchangeRateApi = gson
                     .fromJson(json, CurrencyCodeExchangeRateApi.class);
 
-
 //             Necesitamos crear un método para calcular las conversiones entre monedas,
 //             utilizando variables para almacenar los valores ingresados por el usuario,
 //             aplicar las tasas de conversión y mostrar los resultados finales.
@@ -39,9 +38,8 @@ public class Main {
 // SHP, SLE, SLL, SOS, SRD, SSP, STN, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TVD, TWD,
 // TZS, UAH, UGX, UYU, UZS, VES, VND, VUV, WST, XAF, XCD, XDR, XOF, XPF, YER, ZAR, ZMW, ZWL]
 
-//            Pruebas
-
-//            Transformando datos de la clase intermedia a nuestra clase CurrencyCode
+//            Pruebas utilizando DTO con la clase intermedia CurrencyCodeExchangeApi
+//            Transformando datos de la clase intermedia a nuestra clase CurrencyBaseCode
             CurrencyBaseCode currencyBaseCode = new CurrencyBaseCode(currencyCodeExchangeRateApi);
 //            System.out.println(currencyBaseCode); // CurrencyBaseCode{baseCode='USD', conversionRates={"USD":1,"AED":3.6725, ...
 //            System.out.println(currencyBaseCode.getClass()); // class Modelos.CurrencyBaseCode
@@ -51,65 +49,32 @@ public class Main {
 //            System.out.println(currencyBaseCode.getConversionRates().isJsonObject()); // true
 //            System.out.println(currencyBaseCode.getConversionRates().getClass()); // class com.google.gson.JsonObject
 //            Con eso respondemos ¿Qué es un JsonObject?
-//            System.out.println(currencyBaseCode.getConversionRates().asMap()); // {USD=1, AED=3.6725, AFN=72.2106,
-//            System.out.println(currencyBaseCode.getConversionRates().asMap().getClass()); // class com.google.gson.internal.LinkedTreeMap
-//            System.out.println(currencyBaseCode.getConversionRates().asMap().get("CLP").getClass()); // class com.google.gson.JsonPrimitive
-//            System.out.println(currencyBaseCode.getConversionRates().keySet()); // [USD, AED, AFN, ALL,
-//            System.out.println(currencyBaseCode.getConversionRates().keySet().getClass()); // class com.google.gson.internal.LinkedTreeMap$KeySet
+
 //            System.out.println(currencyBaseCode.getConversionRates().get("USD")); // 1
 //            System.out.println(currencyBaseCode.getConversionRates().get("CLP")); // 960.7531
 //            System.out.println(currencyBaseCode.getConversionRates().get("CLP").getClass()); // class com.google.gson.JsonPrimitive
-//       **** System.out.println(currencyBaseCode.getConversionRates().get("CLP").getAsDouble()); // 939.3104
-
-            //Intentaré transformar la lista de conversiones a un nuevo Json
-            // y luego lo pasaré a una clase intermedia DTO
-            var conversionJson = gson.toJson(currencyBaseCode.getConversionRates());
-//            System.out.println(conversiones2); // {"USD":1,"AED":3.6725,"AFN":72.2106,
-//            System.out.println(conversiones2.getClass()); // class java.lang.String
-            ConversionList conversionList = gson.fromJson(conversionJson, ConversionList.class); // No resulto
-            System.out.println(conversionList);
-
-//
-//            Creamos una clase ConversionList para filtrar nuestras monedas de interés
-//            ConversionList conversionList = gson.fromJson(currencyBaseCode.getConversionRates(), ConversionList.class);
-//            System.out.println(conversionList); // ConversionList{USD=1.0, CLP=960.751, ARS=864.75}
-//            System.out.println(conversionList.getCLP()+conversionList.getARS()); // 1825.501 it works!
-//            ConversionList conversionList = gson.fromJson(currencyBaseCode.getConversionRates(), ConversionList.class);
-//            System.out.println(conversionList); // ConversionList{USD=1.0, CLP=944.7498, ARS=864.75}//
-//            No me convence, pero, puede ser la solución?
-
-//            Prefiero pensar en otra forma de resolver el problema, intentaré con HashMap
-//            Class HashMap<K,V> --> No se puede ordenar?
-            HashMap conversionMap = gson.fromJson(currencyBaseCode.getConversionRates(), HashMap.class);
-//            System.out.println(conversionMap); // {FJD=2.2538, MXN=16.9807, SCR=13.7889, TVD=1.5121, ...
-//            Method entrySet() --> Returns a Set view of the mappings contained in this map.
-//            System.out.println(conversionMap.entrySet()); // [FJD=2.2408, MXN=16.8896, SCR=13.8815,
-//            Method get(Object key) --> Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
-//            System.out.println(conversionMap.get(1)); // null
-            System.out.println(conversionMap.get("CLP")); // 939.3104
-//         ** System.out.println(conversionMap.get("CLP").getClass()); // class java.lang.Double
-//            Method keySet() --> Returns a Set view of the keys contained in this map.
-//            System.out.println(conversionMap.keySet()); // [FJD, MXN, SCR, TVD, CDF,
-//            Method size() --> Returns the number of key-value mappings in this map.
-//            System.out.println(conversionMap.size()); // 162
-//            Method values() Returns a Collection view of the values contained in this map.
-//            System.out.println(conversionMap.values()); // [2.2408, 16.8896, 13.8815,
-//            System.out.println(conversionMap.values().getClass()); // class java.util.HashMap$Values
+            System.out.println(currencyBaseCode.getConversionRates().get("CLP").getAsDouble()); // 939.3104
 
 
-//            System.out.println(conversionMap);
 
-//            CurrencyBaseCode currencyBaseCode = new CurrencyBaseCode(currencyCodeExchangeRateApi);
-//            HashMap conversionMap = gson.fromJson(currencyBaseCode.getConversionRates(), HashMap.class);
+//            Llamamos a la clase Scanner para leer los datos del usuario
+            Scanner sc = new Scanner(System.in);
+            Menu menu = new Menu();
+            int option = Integer.parseInt(sc.next());
+            String baseCode;
+            String targetCode;
+            Double conversionRate;
+            while (option != 7) {
+                switch (option) {
+                    case 1:{
+                        baseCode = "USD";
+                        targetCode = "ARS";
+                        conversionRate = currencyBaseCode.getConversionRates().get(targetCode).getAsDouble() / currencyBaseCode.getConversionRates().get(baseCode).getAsDouble();
 
-//            ¿Que tal un ArrayList?
-//            Class ArrayList<E>
-//            ArrayList<JsonObject>
-
-
-//            // Llamamos a la clase Scanner para leer los datos del usuario
-//            Scanner sc = new Scanner(System.in);
-//            // Solicitamos los pares de monedas y el monto a convertir
+                    }
+                }
+            }
+//            Solicitamos los pares de monedas y el monto a convertir
 //            System.out.println("Ingresa tu moneda base, por ejemplo: USD, CLP, ARS, ...");
 //            String baseCode = sc.nextLine().toUpperCase(); // en caso que el usuario utilice minusculas
 //            // conversionMap.get(baseCode); // es el valor asociado a la key!!
