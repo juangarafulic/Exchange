@@ -1,5 +1,5 @@
 <h1 align="center"> 
-  <img src="https://github.com/juangarafulic/sistema-de-registro/assets/156981788/c37c4907-feb9-46d3-9014-0262a21f17bb" width=50>
+  <img src="https://github.com/juangarafulic/Exchange/blob/main/Badge-Conversor.png" width=100>
   <p>Exchange - Conversor de Monedas</p>
 </h1>
 
@@ -63,13 +63,6 @@ Explora estas opciones y elige aquella que mejor se adapte a tus objetivos y req
 
 * [Tecnologías utilizadas](#tecnologías-utilizadas)
 
-* [Personas Contribuyentes](#personas-contribuyentes)
-
-* [Personas-Desarrolladores del Proyecto](#personas-desarrolladores)
-
-* [Licencia](#licencia)
-
-* [Conclusión](#conclusión)
    
 ## Estado del proyecto
 
